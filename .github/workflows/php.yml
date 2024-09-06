@@ -1,17 +1,18 @@
 name: Minha primeira action
 
-on: [ push, pull_request ]
+on: 
+  [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
-      
-    - name: Verifica sintaxe de src/factory.php
-      run: php -l src/factory.php
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: Validate PHP syntax for src/factory.php
+        run: php -l src/factory.php
